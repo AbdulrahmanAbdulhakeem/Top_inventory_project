@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 70%;
+            margin: 0 auto;
+            max-width: 700px;
+            padding: 2rem;
+        }
+
+        li{
+            list-style-type: none;
+        }
+
+        .item{
+            display: flex;
+            margin-top: 1rem;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        button{
+            padding: 1rem;
+            background-color: #101020;
+            /* outline: none; */
+            border: none;
+            border-radius: 5px;
+        }
+
+         a{
+            text-decoration: none;
+            color: #f9f9fc;
+        }
+
+        a:hover{
+            color: #a46af7;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><%= title %></h1>
+        <button><a href="/items/<%=category_id%>/add">Add Items</a></button>
+        <div class="items">
+            <ul>
+                <% items.forEach(item => { %>
+                    <div class="item">
+                        <li><%= item.item_name %></li>
+                        <form action="/items/<%=category_id%>/<%=item.id%>/delete" method="POST">
+                            <button type="submit"><a>Delete</a></button>
+                        </form>
+                        <!-- <button><a href="/items">Get all items</a></button> -->
+                    </div>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
